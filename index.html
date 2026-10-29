@@ -41,6 +41,66 @@ main{grid-template-columns:1fr}
 .cards{grid-template-columns:1fr}
 .hero{padding:42px 18px}
 }
+
+/* Webora Studio mobile menu */
+.site-header {
+  background: #101b38;
+  color: white;
+  padding: 16px 20px;
+  position: relative;
+}
+
+.brand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-name {
+  font-size: 23px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.menu-toggle {
+  background: #2563eb;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-size: 22px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.site-links {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 14px;
+}
+
+.site-links.open {
+  display: flex;
+}
+
+.site-links a {
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.site-links a:hover {
+  background: #26395f;
+}
+
+.site-links .start-link {
+  background: #2563eb;
+  text-align: center;
+  font-weight: bold;
+}
 </style>
 </head>
 <body>
