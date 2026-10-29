@@ -4,15 +4,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Maker Studio</title>
+<title>Webora Studio - Free Website Maker</title>
+<meta name="description" content="Create your own professional business website for free with Webora Studio. No coding required.">
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#172033}
-header{background:#122344;color:white;padding:25px;text-align:center}
-header h1{margin:0;font-size:28px}
-header p{color:#cbd5e1}
-main{max-width:1100px;margin:25px auto;padding:15px;display:grid;grid-template-columns:340px 1fr;gap:20px}
-.panel,.preview{background:white;border-radius:18px;padding:22px;box-shadow:0 8px 28px #00000010;min-width:0}
+.site-header{background:#101b38;color:white;padding:16px 20px;position:relative;z-index:10}
+.brand-row{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:1200px;margin:auto}
+.brand-name{font-size:24px;font-weight:800;margin:0}
+.menu-toggle{background:#2563eb;color:white;border:0;border-radius:9px;padding:10px 14px;font-size:16px;cursor:pointer}
+.site-links{display:none;flex-direction:column;gap:4px;max-width:1200px;margin:auto;padding-top:14px}
+.site-links.open{display:flex}
+.site-links a{color:white;text-decoration:none;padding:12px;border-radius:8px}
+.site-links a:hover{background:#26395f}
+.site-links .start-link{background:#2563eb;text-align:center;font-weight:bold}
+.intro{text-align:center;padding:45px 20px;background:linear-gradient(135deg,#eaf1ff,#fff)}
+.intro h2{font-size:clamp(28px,5vw,44px);margin:0 0 12px}
+.intro p{color:#657187;line-height:1.7}
+main{max-width:1100px;margin:25px auto;padding:15px;display:grid;grid-template-columns:340px 1fr;gap:20px;scroll-margin-top:20px}
+.panel,.preview,.info-section{background:white;border-radius:18px;padding:22px;box-shadow:0 8px 28px #00000010;min-width:0}
 h2{margin-top:0}
 label{display:block;font-weight:bold;font-size:13px;margin:14px 0 6px}
 input,textarea,select{width:100%;padding:11px;border:1px solid #d7deea;border-radius:9px;font:inherit}
@@ -20,248 +31,253 @@ textarea{min-height:70px}
 button{border:0;padding:12px 16px;border-radius:9px;background:#2563eb;color:white;font-weight:bold;cursor:pointer;margin-top:12px}
 button.secondary{background:#e8edf5;color:#172033}
 button.full{width:100%}
-.preview{padding:0;overflow:hidden}
+.preview{padding:0;overflow:hidden;scroll-margin-top:20px}
 .preview-title{padding:18px;border-bottom:1px solid #eee;font-weight:bold}
 .site-nav{padding:20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #eee;font-weight:bold;overflow-wrap:anywhere}
 .site-nav img{width:42px;height:42px;object-fit:contain;border-radius:8px}
-.hero{text-align:center;padding:65px 22px;background:linear-gradient(135deg,#eaf1ff,#f8fafc)}
-.hero h1{font-size:clamp(30px,4vw,48px);margin:15px 0}
-.hero p{color:#657187;line-height:1.7}
+.hero{text-align:center;padding:55px 22px;background:linear-gradient(135deg,#eaf1ff,#f8fafc)}
+.hero h1{font-size:clamp(28px,4vw,46px);margin:15px 0}
+.hero p{color:#657187;line-height:1.7;white-space:pre-wrap}
 .cta{display:inline-block;background:var(--brand,#2563eb);color:white;padding:13px 20px;border-radius:9px;text-decoration:none;margin-top:15px;font-weight:bold}
-.services{padding:30px 20px}
+.services{padding:30px 20px;scroll-margin-top:20px}
 .services h2{text-align:center}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.card{border:1px solid #e2e8f0;padding:18px;border-radius:12px;overflow-wrap:anywhere}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{border:1px solid #e2e8f0;padding:16px;border-radius:12px;overflow-wrap:anywhere}
 .card h3{font-size:15px}
 .card p{font-size:13px;color:#657187;line-height:1.6}
-.contact{text-align:center;background:#f7f9fc;padding:28px;overflow-wrap:anywhere}
+.contact{text-align:center;background:#f7f9fc;padding:28px;overflow-wrap:anywhere;scroll-margin-top:20px}
 footer{text-align:center;padding:18px;color:#64748b;font-size:12px}
+.info-section{max-width:1100px;margin:20px auto;padding:28px;scroll-margin-top:20px}
+.info-section p{line-height:1.8;color:#657187}
+.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.info-card{padding:18px;border:1px solid #e2e8f0;border-radius:12px}
+.info-card h3{margin-top:0}
 @media(max-width:760px){
-main{grid-template-columns:1fr}
-.cards{grid-template-columns:1fr}
-.hero{padding:42px 18px}
-}
-
-/* Webora Studio mobile menu */
-.site-header {
-  background: #101b38;
-  color: white;
-  padding: 16px 20px;
-  position: relative;
-}
-
-.brand-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-name {
-  font-size: 23px;
-  font-weight: 800;
-  margin: 0;
-}
-
-.menu-toggle {
-  background: #2563eb;
-  color: white;
-  border: 0;
-  border-radius: 9px;
-  padding: 10px 14px;
-  font-size: 22px;
-  cursor: pointer;
-  margin: 0;
-}
-
-.site-links {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  padding-top: 14px;
-}
-
-.site-links.open {
-  display: flex;
-}
-
-.site-links a {
-  color: white;
-  text-decoration: none;
-  padding: 12px;
-  border-radius: 8px;
-}
-
-.site-links a:hover {
-  background: #26395f;
-}
-
-.site-links .start-link {
-  background: #2563eb;
-  text-align: center;
-  font-weight: bold;
+main{grid-template-columns:1fr;margin:10px auto;padding:12px}
+.cards,.info-grid{grid-template-columns:1fr}
+.hero{padding:38px 16px}
+.brand-name{font-size:21px}
+.intro{padding:35px 16px}
+.info-section{margin:14px 12px;padding:22px}
 }
 </style>
 </head>
 <body>
-<header>
-<h1>Webora Studio</h1>
-<p>Create your own business website without coding</p>
+
+<header class="site-header" id="home">
+  <div class="brand-row">
+    <h1 class="brand-name">Webora Studio</h1>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteLinks">☰ Menu</button>
+  </div>
+  <nav class="site-links" id="siteLinks">
+    <a href="#home">Home</a>
+    <a href="#builder">Website Builder</a>
+    <a href="#templates">Live Preview</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+    <a class="start-link" href="#builder">Start Building Free</a>
+  </nav>
 </header>
 
-<main>
-<section class="panel">
-<h2>Website Settings</h2>
-<p>Change the details and see your website update instantly.</p>
+<section class="intro">
+  <h2>Create Your Own Website</h2>
+  <p>Build a professional business website without coding.<br>Enter your details, customize the design and download your website.</p>
+  <a class="cta" href="#builder">Start Building Free</a>
+</section>
 
-<label>Business Name</label>
-<input id="name" value="Your Business">
+<main id="builder">
+  <section class="panel">
+    <h2>Website Settings</h2>
+    <p>Change your details and see the website update instantly.</p>
 
-<label>Main Heading</label>
-<input id="heading" value="Welcome to Our Business">
+    <label for="name">Business Name</label>
+    <input id="name" value="Your Business">
 
-<label>About Your Business</label>
-<textarea id="about">We provide quality services and professional solutions for our customers.</textarea>
+    <label for="heading">Main Heading</label>
+    <input id="heading" value="Welcome to Our Business">
 
-<label>Phone / WhatsApp</label>
-<input id="phone" value="+92 3427022960 ">
+    <label for="aboutText">About Your Business</label>
+    <textarea id="aboutText">We provide quality services and professional solutions for our customers.</textarea>
 
-<label>Email</label>
-<input id="email" value="ammarazam994@gmail.com">
+    <label for="phone">Phone / WhatsApp</label>
+    <input id="phone" value="+92 300 1234567">
 
-<label>Services (one per line)</label>
-<textarea id="services">Our Services
+    <label for="email">Email</label>
+    <input id="email" value="hello@example.com">
+
+    <label for="servicesInput">Services (one per line)</label>
+    <textarea id="servicesInput">Our Services
 Quality Products
 Customer Support</textarea>
 
-<label>Upload Logo</label>
-<input id="logo" type="file" accept="image/*">
+    <label for="logo">Upload Logo</label>
+    <input id="logo" type="file" accept="image/*">
 
-<label>Brand Color</label>
-<input id="color" type="color" value="#2563eb">
+    <label for="color">Brand Color</label>
+    <input id="color" type="color" value="#2563eb">
 
-<label>Design Style</label>
-<select id="style">
-<option value="modern">Modern</option>
-<option value="elegant">Elegant</option>
-<option value="bold">Bold</option>
-</select>
+    <label for="designStyle">Design Style</label>
+    <select id="designStyle">
+      <option value="modern">Modern</option>
+      <option value="elegant">Elegant</option>
+      <option value="bold">Bold</option>
+    </select>
 
-<button class="full" id="download">Download My Website</button>
-<button class="secondary full" id="reset">Reset Demo</button>
-</section>
+    <button class="full" id="download">Download My Website</button>
+    <button class="secondary full" id="reset">Reset Demo</button>
+  </section>
 
-<section class="preview">
-<div class="preview-title">Live Website Preview</div>
-<nav class="site-nav">
-<img id="previewLogo" alt="Logo" hidden>
-<span id="pName">Your Business</span>
-</nav>
-
-<section class="hero" id="hero">
-<div style="color:var(--brand);font-size:12px;font-weight:bold;letter-spacing:2px">WELCOME</div>
-<h1 id="pHeading">Welcome to Our Business</h1>
-<p id="pAbout">We provide quality services and professional solutions for our customers.</p>
-<a class="cta" id="contactLink" href="#contact">Contact Us</a>
-</section>
-
-<section class="services">
-<h2>Our Services</h2>
-<div class="cards" id="pServices"></div>
-</section>
-
-<section class="contact" id="contact">
-<h2>Contact Us</h2>
-<p id="pPhone">+92 342 7022960 </p>
-<p id="pEmail">hello@example.com</p>
-<a class="cta" id="callButton" href="tel:+923001234567">Call Now</a>
-</section>
-
-<footer id="pFooter">© 2026 Your Business. All rights reserved.</footer>
-</section>
+  <section class="preview" id="templates">
+    <div class="preview-title">Live Website Preview</div>
+    <nav class="site-nav">
+      <img id="previewLogo" alt="Business Logo" hidden>
+      <span id="pName">Your Business</span>
+    </nav>
+    <section class="hero" id="hero">
+      <div style="color:var(--brand);font-size:12px;font-weight:bold;letter-spacing:2px">WELCOME</div>
+      <h1 id="pHeading">Welcome to Our Business</h1>
+      <p id="pAbout">We provide quality services and professional solutions for our customers.</p>
+      <a class="cta" href="#contactPreview">Contact Us</a>
+    </section>
+    <section class="services">
+      <h2>Our Services</h2>
+      <div class="cards" id="pServices"></div>
+    </section>
+    <section class="contact" id="contactPreview">
+      <h2>Contact Us</h2>
+      <p id="pPhone">+92 300 1234567</p>
+      <p id="pEmail">hello@example.com</p>
+      <a class="cta" id="callButton" href="tel:+923001234567">Call Now</a>
+    </section>
+    <footer id="pFooter">© 2026 Your Business. All rights reserved.</footer>
+  </section>
 </main>
 
+<section class="info-section" id="pricing">
+  <h2>Simple Pricing</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>Free Builder</h3>
+      <p>Customize your business website preview and download the generated HTML file for free.</p>
+    </div>
+    <div class="info-card">
+      <h3>Website Download</h3>
+      <p>Use the download button to save your generated website file to your device.</p>
+    </div>
+    <div class="info-card">
+      <h3>Need Help?</h3>
+      <p>Customize your website details in the builder above before downloading.</p>
+    </div>
+  </div>
+</section>
+
+<section class="info-section" id="about">
+  <h2>About Webora Studio</h2>
+  <p>Webora Studio helps people create a simple business website without needing to write code. Add your business name, description, contact details, logo and services, then preview and download your website.</p>
+</section>
+
+<section class="info-section" id="contact">
+  <h2>Contact</h2>
+  <p>To contact a business, enter its real phone number and email in the Website Builder. Those details will appear in the generated website.</p>
+  <a class="cta" href="#builder">Create Your Website</a>
+</section>
+
+<footer>© 2026 Webora Studio. All rights reserved.</footer>
+
 <script>
-const $=id=>document.getElementById(id);
-let logoData="";
+const $ = id => document.getElementById(id);
+let logoData = "";
 
-function escapeHTML(text){
- return String(text).replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- })[c]);
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
 }
 
-function update(){
- const name=$("name").value.trim()||"Your Business";
- const heading=$("heading").value.trim()||"Welcome";
- const about=$("about").value;
- const phone=$("phone").value.trim();
- const email=$("email").value.trim();
- const color=$("color").value;
- const style=$("style").value;
-
- $("pName").textContent=name;
- $("pHeading").textContent=heading;
- $("pAbout").textContent=about;
- $("pPhone").textContent=phone;
- $("pEmail").textContent=email;
- $("pFooter").textContent="© "+new Date().getFullYear()+" "+name+". All rights reserved.";
- document.documentElement.style.setProperty("--brand",color);
-
- $("callButton").href="tel:"+phone.replace(/[^\d+]/g,"");
-
- const hero=$("hero");
- hero.style.background=style==="elegant"?"#f7f0e5":
- style==="bold"?"linear-gradient(135deg,"+color+"44,#ffffff)":
- "linear-gradient(135deg,#eaf1ff,#f8fafc)";
- hero.style.fontFamily=style==="elegant"?"Georgia,serif":"Arial,sans-serif";
-
- const services=$("services").value.split("\n").map(s=>s.trim()).filter(Boolean).slice(0,6);
- $("pServices").innerHTML=services.map(s=>
- '<article class="card"><h3>'+escapeHTML(s)+'</h3><p>Professional solutions designed around your needs.</p></article>'
- ).join("");
+function getServices() {
+  return $("servicesInput").value
+    .split("\n").map(s => s.trim()).filter(Boolean).slice(0, 6);
 }
 
-["name","heading","about","phone","email","services","color","style"].forEach(id=>{
- $(id).addEventListener("input",update);
+function update() {
+  const name = $("name").value.trim() || "Your Business";
+  const heading = $("heading").value.trim() || "Welcome";
+  const about = $("aboutText").value;
+  const phone = $("phone").value.trim();
+  const email = $("email").value.trim();
+  const color = $("color").value;
+  const style = $("designStyle").value;
+
+  $("pName").textContent = name;
+  $("pHeading").textContent = heading;
+  $("pAbout").textContent = about;
+  $("pPhone").textContent = phone;
+  $("pEmail").textContent = email;
+  $("pFooter").textContent = "© " + new Date().getFullYear() + " " + name + ". All rights reserved.";
+
+  document.documentElement.style.setProperty("--brand", color);
+  $("callButton").href = "tel:" + phone.replace(/[^\d+]/g, "");
+
+  const hero = $("hero");
+  hero.style.background = style === "elegant" ? "#f7f0e5" :
+    style === "bold" ? "linear-gradient(135deg," + color + "44,#ffffff)" :
+    "linear-gradient(135deg,#eaf1ff,#f8fafc)";
+  hero.style.fontFamily = style === "elegant" ? "Georgia,serif" : "Arial,sans-serif";
+
+  $("pServices").innerHTML = getServices().map(service =>
+    '<article class="card"><h3>' + escapeHTML(service) +
+    '</h3><p>Professional solutions designed around your needs.</p></article>'
+  ).join("");
+}
+
+["name","heading","aboutText","phone","email","servicesInput","color","designStyle"].forEach(id => {
+  $(id).addEventListener("input", update);
+  $(id).addEventListener("change", update);
 });
 
-$("logo").addEventListener("change",e=>{
- const file=e.target.files[0];
- if(!file)return;
- const reader=new FileReader();
- reader.onload=()=>{
-  logoData=reader.result;
-  $("previewLogo").src=logoData;
-  $("previewLogo").hidden=false;
- };
- reader.readAsDataURL(file);
+$("logo").addEventListener("change", event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    logoData = reader.result;
+    $("previewLogo").src = logoData;
+    $("previewLogo").hidden = false;
+  };
+  reader.readAsDataURL(file);
 });
 
-function makeWebsite(){
- const name=$("name").value.trim()||"My Business";
- const heading=$("heading").value.trim()||"Welcome";
- const about=$("about").value;
- const phone=$("phone").value.trim();
- const email=$("email").value.trim();
- const color=$("color").value;
- const style=$("style").value;
- const services=$("services").value.split("\n").map(s=>s.trim()).filter(Boolean).slice(0,6);
+function makeWebsite() {
+  const name = $("name").value.trim() || "My Business";
+  const heading = $("heading").value.trim() || "Welcome";
+  const about = $("aboutText").value;
+  const phone = $("phone").value.trim();
+  const email = $("email").value.trim();
+  const color = $("color").value;
+  const style = $("designStyle").value;
 
- const serviceHTML=services.map(s=>
- '<article class="card"><h3>'+escapeHTML(s)+'</h3><p>Professional solutions designed around your needs.</p></article>'
- ).join("");
+  const servicesHTML = getServices().map(service =>
+    '<article class="card"><h3>' + escapeHTML(service) +
+    '</h3><p>Professional solutions designed around your needs.</p></article>'
+  ).join("");
 
- const logo=logoData?
- '<img src="'+logoData+'" alt="Business logo" style="width:42px;height:42px;object-fit:contain">':
- "";
+  const logoHTML = logoData
+    ? '<img src="' + logoData + '" alt="Business logo" style="width:42px;height:42px;object-fit:contain">'
+    : "";
 
- const html=`<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escapeHTML(name)}</title>
+<meta name="description" content="${escapeHTML(about.slice(0,150))}">
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;color:#172033}
@@ -269,11 +285,11 @@ nav{padding:20px 6%;display:flex;align-items:center;gap:12px;border-bottom:1px s
 nav img{width:42px;height:42px;object-fit:contain}
 .hero{text-align:center;padding:65px 20px;background:${style==="elegant"?"#f7f0e5":style==="bold"?"linear-gradient(135deg,"+color+"44,#fff)":"linear-gradient(135deg,#eaf1ff,#f8fafc)"}}
 .hero h1{font-size:clamp(32px,6vw,54px)}
-.hero p{max-width:650px;margin:auto;color:#657187;line-height:1.7}
+.hero p{max-width:650px;margin:auto;color:#657187;line-height:1.7;white-space:pre-wrap}
 .btn{display:inline-block;margin-top:18px;padding:13px 20px;border-radius:9px;background:${color};color:white;text-decoration:none;font-weight:bold}
 .services{padding:35px 6%}
 .services h2{text-align:center}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .card{padding:20px;border:1px solid #e2e8f0;border-radius:12px;overflow-wrap:anywhere}
 .card p{color:#657187;line-height:1.6}
 .contact{text-align:center;padding:30px;background:#f7f9fc}
@@ -282,14 +298,16 @@ footer{text-align:center;padding:20px;color:#64748b}
 </style>
 </head>
 <body>
-<nav>${logo}<span>${escapeHTML(name)}</span></nav>
+<nav>${logoHTML}<span>${escapeHTML(name)}</span></nav>
 <section class="hero">
-<div style="color:${color};font-weight:bold;letter-spacing:2px">WELCOME</div>
 <h1>${escapeHTML(heading)}</h1>
 <p>${escapeHTML(about)}</p>
 <a class="btn" href="#contact">Contact Us</a>
 </section>
-<section class="services"><h2>Our Services</h2><div class="cards">${serviceHTML}</div></section>
+<section class="services">
+<h2>Our Services</h2>
+<div class="cards">${servicesHTML}</div>
+</section>
 <section class="contact" id="contact">
 <h2>Contact Us</h2>
 <p>${escapeHTML(phone)}</p>
@@ -299,34 +317,51 @@ footer{text-align:center;padding:20px;color:#64748b}
 <footer>© ${new Date().getFullYear()} ${escapeHTML(name)}. All rights reserved.</footer>
 </body>
 </html>`;
-
- const blob=new Blob([html],{type:"text/html;charset=utf-8"});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;
- a.download=(name.toLowerCase().replace(/[^a-z0-9]+/g,"-")||"my-website")+".html";
- document.body.appendChild(a);
- a.click();
- a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
 
-$("download").addEventListener("click",makeWebsite);
+$("download").addEventListener("click", () => {
+  const blob = new Blob([makeWebsite()], {type:"text/html;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "my-website.html";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+});
 
-$("reset").addEventListener("click",()=>{
- $("name").value="Your Business";
- $("heading").value="Welcome to Our Business";
- $("about").value="We provide quality services and professional solutions for our customers.";
- $("phone").value="+92 300 1234567";
- $("email").value="hello@example.com";
- $("services").value="Our Services\nQuality Products\nCustomer Support";
- $("color").value="#2563eb";
- $("style").value="modern";
- $("logo").value="";
- logoData="";
- $("previewLogo").removeAttribute("src");
- $("previewLogo").hidden=true;
- update();
+$("reset").addEventListener("click", () => {
+  $("name").value = "Your Business";
+  $("heading").value = "Welcome to Our Business";
+  $("aboutText").value = "We provide quality services and professional solutions for our customers.";
+  $("phone").value = "+92 300 1234567";
+  $("email").value = "hello@example.com";
+  $("servicesInput").value = "Our Services\nQuality Products\nCustomer Support";
+  $("color").value = "#2563eb";
+  $("designStyle").value = "modern";
+  $("logo").value = "";
+  logoData = "";
+  $("previewLogo").hidden = true;
+  $("previewLogo").removeAttribute("src");
+  update();
+});
+
+const menuToggle = $("menuToggle");
+const siteLinks = $("siteLinks");
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = siteLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
+});
+
+siteLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    siteLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰ Menu";
+  });
 });
 
 update();
